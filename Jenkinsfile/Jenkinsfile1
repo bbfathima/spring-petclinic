@@ -1,7 +1,7 @@
     pipeline {
       agent { label 'FATHIMA'}
     }
-    stages{
+    stages {
         stage {
           steps {
             git url: 'https://github.com/bbfathima/spring-petclinic.git',
