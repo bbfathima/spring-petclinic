@@ -1,16 +1,16 @@
-    pipeline {
-    agent { label 'FATHIMA'}
+  pipeline {
+  agent { label 'FATHIMA'}
     stages {
-        stage {
+        stage('git clone') {
           steps {
             git url: 'https://github.com/bbfathima/spring-petclinic.git',
                branch: 'declarative'
           }
         }
-    }
-        stage (build) {
+        stage('build') {
           steps {
             sh './mvnw package'
           }
         }
     }
+  }
