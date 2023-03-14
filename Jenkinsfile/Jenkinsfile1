@@ -1,0 +1,17 @@
+    pipeline {
+      agent { label 'FATHIMA'}
+    }
+    stages{
+        stage {
+          steps {
+            git url: https://github.com/bbfathima/spring-petclinic.git,
+               branch: declarative
+          }
+        }
+    }
+        stage (build) {
+          steps {
+            sh './mvnw package'
+          }
+        }
+    
