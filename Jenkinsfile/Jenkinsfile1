@@ -1,16 +1,26 @@
-  pipeline {
-  agent { label 'FATHIMA'}
-    stages {
-        stage('git clone') {
-          steps {
-            git url: 'https://github.com/bbfathima/spring-petclinic.git',
-               branch: 'declarative'
-          }
+pipeline{
+    agent{label 'abc' }
+    stages{
+        stage(clone) {
+            steps{
+                git url: 'https://github.com/bbfathima/game-of-life.git'
+                    branch: 'declarative'
+            }
         }
-        stage('build') {
-          steps {
-            sh './mvnw package'
-          }
-        }
+        stage(build) {
+            steps{
+                sh './mvnw package'     
+            }
     }
-  }
+    stage(sonar analysis) {
+            steps{
+           //     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fathima-sonar_gameoflife'
+           // }
+       // }
+    }
+}
+post {
+    always {
+        emailtext body: "Build $(BUILD_NUMBER) has finished", subkect: "Jenkins build notification", to: 'fathimaskills@gmail.com'
+    }
+}
