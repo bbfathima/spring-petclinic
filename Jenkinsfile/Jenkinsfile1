@@ -14,7 +14,7 @@ pipeline{
        }
        stage(sonar analysis) {
             steps {
-           //     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fathima-sonar_gameoflife'
+           //     sh './mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fathima-sonar_gameoflife'
             }
        }
 }
