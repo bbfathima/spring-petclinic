@@ -1,20 +1,20 @@
 pipeline{
       agent{label 'abc' }
       stages{
-          stage(clone) {
-            steps{
+          stage('clone') {
+            steps {
                 git url: 'https://github.com/bbfathima/game-of-life.git'
                     branch: 'declarative'
           }
       }
-      stage(build) {
-          steps{
+      stage('build') {
+          steps {
                 sh './mvnw package'     
           }
        }
-       stage(sonar analysis) {
+       stage('sonar analysis') {
             steps {
-           //     sh './mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fathima-sonar_gameoflife'
+                sh './mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fathima-sonar_gameoflife'
             }
        }
 }
