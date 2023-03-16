@@ -1,4 +1,4 @@
-  pipeline{
+pipeline{
       agent{label 'abc' }
       stages{
           stage(clone) {
@@ -13,15 +13,15 @@
           }
        }
        stage(sonar analysis) {
-            steps{
+            steps {
            //     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fathima-sonar_gameoflife'
             }
        }
-    }
 }
 post {
     always {
         emailtext body: "Build $(BUILD_NUMBER) has finished", subkect: "Jenkins build notification", to: 'fathimaskills@gmail.com'
-    }
+            }
+       }
 }
 }
