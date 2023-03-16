@@ -24,3 +24,5 @@ post {
         emailtext body: "Build $(BUILD_NUMBER) has finished", subkect: "Jenkins build notification", to: 'fathimaskills@gmail.com'
     }
 }
+}
+}
